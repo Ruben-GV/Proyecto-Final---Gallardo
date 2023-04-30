@@ -2,7 +2,8 @@ from django.shortcuts import render
 from .models import Curso, Profesor, Estudiante, Entregable
 from django.http import HttpResponse
 from .forms import *
-
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 # Create your views here.
 
 """
@@ -109,3 +110,53 @@ def buscar(request):
         respuesta = "No enviaste datos"
     return HttpResponse(respuesta)
 
+def eliminarProfesor(request, id):
+    profesor=Profesor.objects.get(id=id)
+    print(profesor)
+    profesor.delete()
+    profesores=Profesor.objects.all()
+    form = Profesorform()
+    return render(request, "AppCoder/Profesores.html", {"profesores": profesores, "mensaje": "Profesor eliminado correctamente", "form": form})
+
+def editarProfesor(request, id):
+    profesor=Profesor.objects.get(id=id)
+    if request.method=="POST":
+        form = Profesorform(request.POST)
+        if form.is_valid():
+            info = form.cleaned_data
+            profesor.nombre=info["nombre"]
+            profesor.apellido=info["apellido"]
+            profesor.email=info["email"]
+            profesor.profesion=info["profesion"]
+            profesor.save()
+            profesores=Profesor.objects.all()
+            form = Profesorform()
+            return render(request, "AppCoder/Profesores.html", {"profesores": profesores, "mensaje": "Profesor editado correctamente"})
+        pass
+    else:
+        formulario = Profesorform(initial={"nombre":profesor.nombre, "apellido":profesor.apellido, "email":profesor.email, "profesion":profesor.profesion})
+        return render(request, "AppCoder/editarProfesor.html", {"form": formulario, "profesor": profesor})
+    
+# Vistas basadas en clases
+
+class EstudianteList(ListView):
+    model= Estudiante
+    template_name= "AppCoder/estudiantes.html"
+
+class EstudianteCreacion(CreateView):
+    model= Estudiante
+    success_url= reverse_lazy("estudiante_list")
+    fields=['nombre', 'apellido', 'email']
+
+class EstudianteDetalle(DetailView):
+    model= Estudiante
+    template_name="AppCoder/estudiante_detalle.html"
+
+class EstudianteUpdate(UpdateView):
+    model = Estudiante
+    success_url = reverse_lazy("estudiante_list")
+    fields=['nombre', 'apellido', 'email']
+
+class EstudianteDelete(DeleteView):
+    model = Estudiante
+    success_url = reverse_lazy('estudiante_list')

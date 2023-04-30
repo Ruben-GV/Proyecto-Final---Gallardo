@@ -1,0 +1,21 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+    <h1 class="mb-5">FORMULARIO DE PROFES</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<h1> {{ Editar Profesor }} </h1>
+<form action="{% url 'profeFormulario' %}" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Guardar Cambios">
+</form>
+
+{% endblock %}
