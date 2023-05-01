@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Curso(models.Model):
@@ -12,7 +13,7 @@ class Estudiante(models.Model):
     apellido=models.CharField(max_length=50)
     email=models.EmailField()
     def __str__(self):
-        return f"{self.nombre} {self.apellido}" 
+        return f"{self.nombre} {self.apellido}"
 
 class Profesor(models.Model):
     nombre= models.CharField(max_length=50)
@@ -29,4 +30,8 @@ class Entregable(models.Model):
     entregado= models.BooleanField()
 
     def __str__(self):
-        return f"{self.nombre} - {self.fecha_entrega}" 
+        return f"{self.nombre} - {self.fecha_entrega}"
+    
+class Avatar(models.Model):
+    imagen= models.ImageField(upload_to="avatars")
+    user=models.ForeignKey(User, on_delete=models.CASCADE)

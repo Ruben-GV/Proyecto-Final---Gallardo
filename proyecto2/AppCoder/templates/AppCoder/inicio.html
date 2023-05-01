@@ -3,11 +3,14 @@
 {% load static %}
 
 {% block titulo %}
-    <h1>Tercer Pre-entrega Gallardo</h1>
+    <h1>Proyecto Final - Gallardo</h1>
 {% endblock %}
 
 {% block contenido_que_cambia %}
+<h2> {{ mensaje }}</h2>
+<br></br>
 <h1> Busqueda de Curso </h1>
+
 <form action="/AppCoder/buscar/" method="GET">
     {% csrf_token %}
     <table>
