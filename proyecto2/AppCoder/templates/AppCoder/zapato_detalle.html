@@ -4,21 +4,25 @@
 
 
 {% block titulo %}
-    <h1 class="mb-5">DATOS DEL ZAPATO</h1>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Detalles del Zapato</h1>
+  </div>
 {% endblock %}
 
 {% block contenido_que_cambia %}
 <br>
 <br>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
 <div class="card-body" text-align="center">
     <img src="{{zapato.imagenZapato.url}}" class="" width="100px">
 </div>
-<p>NOMBRE: <i>{{ zapato.nombre }}</i></p>
-<p>MARCA: <i>{{ zapato.marca }}</i></p>
-<p>TALLA: <i>{{ zapato.talla }}</i></p>
-<p>PRECIO: <i>{{ zapato.precio }}</i></p>
-<p>TELEFONO: <i>{{ zapato.telefono }}</i></p>
-<p>EMAIL: <i>{{ zapato.email }}</i></p>
+<p class="lead">NOMBRE: <i>{{ zapato.nombre }}</i></p>
+<p class="lead">MARCA: <i>{{ zapato.marca }}</i></p>
+<p class="lead">TALLA: <i>{{ zapato.talla }}</i></p>
+<p class="lead">PRECIO: <i>{{ zapato.precio }}</i></p>
+<p class="lead">TELEFONO: <i>{{ zapato.telefono }}</i></p>
+<p class="lead">EMAIL: <i>{{ zapato.email }}</i></p>
+</div>
 
 <br>
 <div class="container">

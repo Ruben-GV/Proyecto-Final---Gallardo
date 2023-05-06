@@ -4,7 +4,9 @@
 
 
 {% block titulo %}
-    <h1 class="mb-5">DATOS DE LA CAMISETA</h1>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Detalles de la camiseta</h1>
+  </div>
 {% endblock %}
 
 {% block contenido_que_cambia %}
@@ -16,6 +18,7 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <p class="lead">NOMBRE: <i>{{ camiseta.nombre }}</i></p>
     <p class="lead">MARCA: <i>{{ camiseta.marca }}</i></p>
+    <p class="lead">TALLA: <i>{{ camiseta.talla }}</i></p>
     <p class="lead">PRECIO: <i>{{ camiseta.precio }}</i></p>
     <p class="lead">TELEFONO: <i>{{ camiseta.telefono }}</i></p>
     <p class="lead">EMAIL: <i>{{ camiseta.email }}</i></p>

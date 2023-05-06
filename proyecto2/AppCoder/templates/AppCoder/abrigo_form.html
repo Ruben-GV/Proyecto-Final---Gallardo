@@ -4,11 +4,12 @@
 
 
 {% block titulo %}
-    <h1 class="mb-5">FORMULARIO DE CAMISETAS</h1>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Agregar Abrigo</h1>
+  </div>
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<h1>REGISTRA TU CAMISETA</h1>
 
 <form action="{% url 'abrigo_agregar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 

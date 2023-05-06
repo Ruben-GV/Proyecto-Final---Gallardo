@@ -5,13 +5,13 @@
 
 {% block titulo %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Agregar Camiseta</h1>
+    <h1 class="display-4">Editar Pantalon</h1>
   </div>
 {% endblock %}
 
 {% block contenido_que_cambia %}
 
-<form action="{% url 'camiseta_agregar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+<form class="text-center" action="{% url 'pantalon_editar' pantalon.pk %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 
     <table>
 
@@ -19,7 +19,7 @@
 
     </table>
 
-    <input type="submit" value="AGREGAR CAMISETA">
+    <input type="submit" value="MODIFICAR PANTALON">
 
 
 

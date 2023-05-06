@@ -4,11 +4,13 @@
 
 
 {% block titulo %}
-    <h1 class="mb-5">FORMULARIO DE ZAPATOS</h1>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Agregar Zapato</h1>
+  </div>
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<h1>REGISTRA TU ZAPATO</h1>
+
 
 <form action="{% url 'zapato_agregar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 
@@ -18,7 +20,7 @@
 
     </table>
 
-    <input type="submit" value="GUARDAR ZAPATO">
+    <input type="submit" value="AGREGAR ZAPATO">
 
 
 

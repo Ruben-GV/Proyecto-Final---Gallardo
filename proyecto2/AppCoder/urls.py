@@ -8,7 +8,7 @@ urlpatterns = [
     
     path("", inicioApp, name="inicioApp"),
 
-    path("comentario/", comentarios, name="comentarios"),
+    #path("comentarios/", comentarios, name="comentarios"),
 
     path("login/", login_request, name="login"),
     path("register/", register, name="register"),
@@ -44,8 +44,8 @@ urlpatterns = [
     path("zapato/editar/<pk>", ZapatoUpdate.as_view(), name="zapato_editar"),
     path("zapato/borrar/<pk>", ZapatoDelete.as_view(), name="zapato_borrar"),
 
-    path('pantalon_detalle/<pk>/comentario/', ComentarioPage.as_view(), name='comentarios'),
-    path('abrigo_detalle/<pk>/comentario/', ComentarioPage.as_view(), name='comentarios'),
-    path('camiseta_detalle/<pk>/comentario/', ComentarioPage.as_view(), name='comentarios'),
-    path('zapato_detalle/<pk>/comentario/', ComentarioPage.as_view(), name='comentarios'),
+    path('pantalon_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
+    path('abrigo_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
+    path('camiseta_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
+    path('zapato_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
 ]

@@ -1,6 +1,6 @@
 from django.forms.models import BaseModelForm
 from django.shortcuts import render
-from .models import Avatar, Camiseta, Pantalon, Zapato, Zapatilla, Abrigo, Comentario
+from .models import Avatar, Camiseta, Pantalon, Zapato, Abrigo, Comentario
 from django.http import HttpResponse
 from .forms import *
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -129,7 +129,7 @@ class CamisetaList(ListView):
 class CamisetaAgregar(CreateView):
     model= Camiseta
     success_url= reverse_lazy("camiseta_list")
-    fields=['nombre', 'marca', 'precio', 'telefono', 'email', 'imagenCamiseta']
+    fields=['nombre', 'marca', 'talla', 'precio', 'telefono', 'email', 'imagenCamiseta']
 
 class CamisetaDetalle(DetailView):
     model= Camiseta
@@ -137,8 +137,9 @@ class CamisetaDetalle(DetailView):
 
 class CamisetaUpdate(UpdateView):
     model = Camiseta
-    success_url = reverse_lazy("camiseta_list")
-    fields=['nombre', 'marca', 'precio', 'telefono', 'email', 'imagenCamiseta']
+    form_class = ActualizacionCamiseta
+    success_url = reverse_lazy('camiseta_list')
+    template_name = 'AppCoder/camiseta_editar.html'
 
 class CamisetaDelete(DeleteView):
     model = Camiseta
@@ -181,8 +182,9 @@ class PantalonDetalle(DetailView):
 
 class PantalonUpdate(UpdateView):
     model = Pantalon
-    success_url = reverse_lazy("pantalon_list")
-    fields=['nombre', 'marca', 'talla', 'precio', 'telefono', 'email', 'imagenPantalon']
+    form_class = ActualizacionPantalon
+    success_url = reverse_lazy('pantalon_list')
+    template_name = 'AppCoder/pantalon_editar.html'
 
 class PantalonDelete(DeleteView):
     model = Pantalon
@@ -224,8 +226,9 @@ class ZapatoDetalle(DetailView):
 
 class ZapatoUpdate(UpdateView):
     model = Zapato
-    success_url = reverse_lazy("zapato_list")
-    fields=['nombre', 'marca', 'talla', 'precio', 'telefono', 'email', 'imagenZapato']
+    form_class = ActualizacionZapato
+    success_url = reverse_lazy('zapato_list')
+    template_name = 'AppCoder/zapato_editar.html'
 
 class ZapatoDelete(DeleteView):
     model = Zapato
@@ -267,8 +270,9 @@ class AbrigoDetalle(DetailView):
 
 class AbrigoUpdate(UpdateView):
     model = Abrigo
-    success_url = reverse_lazy("abrigo_list")
-    fields=['nombre', 'marca', 'talla', 'precio', 'telefono', 'email', 'imagenAbrigo']
+    form_class = ActualizacionAbrigo
+    success_url = reverse_lazy('abrigo_list')
+    template_name = 'AppCoder/abrigo_editar.html'
 
 class AbrigoDelete(DeleteView):
     model = Abrigo
@@ -291,11 +295,22 @@ def comentarios(request):
     context = {"comentarios": comentarios, "form": form, "avatar":avatar}
     return render(request, "AppCoder/comentario.html",context)
 
-class ComentarioPage(CreateView):
-    model = Comentario
-    template_name = 'AppCoder/comentario.html'
-    success_url = reverse_lazy('inicioApp')
-    fields=['nombre', 'mensaje']
+@login_required
+def crear_comentario(request):
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            comentario = Comentario()
+            comentario.nombre = form.cleaned_data['nombre']
+            comentario.mensaje = form.cleaned_data['mensaje']
+            comentario.save()
+            form = ComentarioForm()
+    else:
+        form = ComentarioForm()
+    avatar= Avatar.objects.filter(user=request.user.id)[0].imagen.url
+    context = {"comentarios": comentarios, "form": form, "avatar":avatar}
+    return render(request, "AppCoder/comentario.html",context)
+
 
 @login_required
 def buscarCamiseta(request):

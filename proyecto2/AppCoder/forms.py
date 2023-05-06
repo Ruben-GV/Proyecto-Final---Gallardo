@@ -33,6 +33,7 @@ class AvatarForm(forms.Form):
 class CamisetaForm(forms.Form):
     nombre = forms.CharField(max_length=200, label="Nombre")
     marca = forms.CharField(max_length=40, label="Marca")
+    talla = forms.CharField(max_length=40, label="Talla")
     precio = forms.DecimalField(max_digits=10, decimal_places=2,label="Precio")
     telefono = forms.IntegerField(label="Telefono")
     email = forms.EmailField()
@@ -74,7 +75,69 @@ class AbrigoForm(forms.Form):
     email = forms.EmailField()
     imagenAbrigo = forms.ImageField(label="Imagen del Abrigo")
 
-class ComentarioForm(forms.Form):
+class ComentarioForm(forms.ModelForm):
     class Meta:
-        nombre = forms.CharField(max_length=20, label="Nombre")
-        mensaje = forms.CharField(max_length=500, label="Mensaje")
+        model = Comentario
+        fields = ('nombre', 'mensaje')
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'mensaje' : forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+class ActualizacionAbrigo(forms.ModelForm):
+    class Meta:
+        model = Abrigo
+        fields = ('nombre', 'marca', 'talla', 'precio', 'telefono', 'email', 'imagenAbrigo')
+
+        widgets = {
+            'nombre' : forms.TextInput(attrs={'class': 'form-control'}),
+            'marca' : forms.TextInput(attrs={'class': 'form-control'}),
+            'talla' : forms.TextInput(attrs={'class': 'form-control'}),
+            'precio' : forms.TextInput(attrs={'class': 'form-control'}),
+            'telefono' : forms.TextInput(attrs={'class': 'form-control'}),
+            'email' : forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+class ActualizacionCamiseta(forms.ModelForm):
+    class Meta:
+        model = Camiseta
+        fields = ('nombre', 'marca', 'talla', 'precio', 'telefono', 'email', 'imagenCamiseta')
+
+        widgets = {
+            'nombre' : forms.TextInput(attrs={'class': 'form-control'}),
+            'marca' : forms.TextInput(attrs={'class': 'form-control'}),
+            'talla' : forms.TextInput(attrs={'class': 'form-control'}),
+            'precio' : forms.TextInput(attrs={'class': 'form-control'}),
+            'telefono' : forms.TextInput(attrs={'class': 'form-control'}),
+            'email' : forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+class ActualizacionZapato(forms.ModelForm):
+    class Meta:
+        model = Zapato
+        fields = ('nombre', 'marca', 'talla', 'precio', 'telefono', 'email', 'imagenZapato')
+
+        widgets = {
+            'nombre' : forms.TextInput(attrs={'class': 'form-control'}),
+            'marca' : forms.TextInput(attrs={'class': 'form-control'}),
+            'talla' : forms.TextInput(attrs={'class': 'form-control'}),
+            'precio' : forms.TextInput(attrs={'class': 'form-control'}),
+            'telefono' : forms.TextInput(attrs={'class': 'form-control'}),
+            'email' : forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+class ActualizacionPantalon(forms.ModelForm):
+    class Meta:
+        model = Pantalon
+        fields = ('nombre', 'marca', 'talla', 'precio', 'telefono', 'email', 'imagenPantalon')
+
+        widgets = {
+            'nombre' : forms.TextInput(attrs={'class': 'form-control'}),
+            'marca' : forms.TextInput(attrs={'class': 'form-control'}),
+            'talla' : forms.TextInput(attrs={'class': 'form-control'}),
+            'precio' : forms.TextInput(attrs={'class': 'form-control'}),
+            'telefono' : forms.TextInput(attrs={'class': 'form-control'}),
+            'email' : forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+    
