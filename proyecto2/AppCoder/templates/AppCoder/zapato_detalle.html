@@ -1,0 +1,43 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+    <h1 class="mb-5">DATOS DEL ZAPATO</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<br>
+<br>
+<div class="card-body" text-align="center">
+    <img src="{{zapato.imagenZapato.url}}" class="" width="100px">
+</div>
+<p>NOMBRE: <i>{{ zapato.nombre }}</i></p>
+<p>MARCA: <i>{{ zapato.marca }}</i></p>
+<p>TALLA: <i>{{ zapato.talla }}</i></p>
+<p>PRECIO: <i>{{ zapato.precio }}</i></p>
+<p>TELEFONO: <i>{{ zapato.telefono }}</i></p>
+<p>EMAIL: <i>{{ zapato.email }}</i></p>
+
+<br>
+<div class="container">
+    <h4>Comentarios del Producto</h4>
+    <br>
+    <div class="container">
+    {% if not zapato.comentarios.all %}
+        No hay comentarios para este producto.
+    {% else %}
+        {% for zapato in zapato.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentarios' zapato.pk %}">Agrega un Comentario</a>
+    </div>
+</div>
+<br>
+
+{% endblock %}

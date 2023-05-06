@@ -1,0 +1,21 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    <h1>Camisetas encontradas</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<h1> Busca tu camiseta favorita </h1>
+<p>Buscando: {{camiseta}}</p>
+
+{% if camisetas %}
+<ul> {% for camiseta in camisetas %}
+    <li> {{camiseta.nombre}} </li>
+    <li> {{camiseta.marca}} </li>
+{% endfor %} </ul>
+
+{% endif %}
+
+{% endblock %}

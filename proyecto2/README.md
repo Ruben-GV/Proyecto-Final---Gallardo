@@ -1,4 +1,12 @@
-# Tercera Pre-entrega Gallardo Ruben
+# Proyecto Final Coder House - Python
+#### Comisión: 51325
+#### Alumno: Ruben Gallardo Vargas
+
+## Nombre del Proyecto
+Tienda Virtual de Ropa y Zapatos
+
+## Versión
+1.0
 
 ## Inicio
 Para poder ver nuestra pagína web en el navegador, primero debemos de hacer los siguiente:
@@ -8,21 +16,34 @@ Para poder ver nuestra pagína web en el navegador, primero debemos de hacer los
 - Luego, escribimos ***python manage.py runserver*** para inciar el servidor.
 - Por último debemos acceder a *http://127.0.0.1:8000/AppCoder/ *
 
-## Inicio de la página
+## Descripción del Proyecto
+La tienda virtual de venta de ropa y zapatos, se hizo con el fin de ofrecer productos a las personas que están interesadas en la moda y querer vestir de buena manera.
 
-A primera vista, veremos la página de inicio junto a un apartado para **Buscar un Curso** de nuestra base de datos.  El uso de este apartado lo dejaremos para el final, ya que debemos registrar Cursos en nuestra base de datos.
+Para hacer uso de la página web, el usuario deberá registrarse con un **User and password**, seguidamente deberá elegir una **foto de perfil** para no tener inconvenientes con la página.
 
-### Cursos
+Los usuarios pueden realizar las siguientes accciones:
+- Navegar entre las distintas pestañas de la página (Abrigos, camisetas, pantalones, zapatos).
+- Acceder a los detalles de cada producto disponible en la página.
+- Editar el perfil de Usuario
+- Cerrar Sesión en la página
+- Iniciar sesión en caso de haber cerrado sesión
 
-En el apartado de los cursos, veremos una opción llamada **Registro de Cursos**, en la cual podrás registrar ***Cursos*** en la base de datos. Teniendo en cuenta el nombre del curso y su número de identificación.
+Importante: solo la administración de la página puede crear, editar y eliminar los productos de la tienda.
 
-### Estudiantes
+# Tecnología Utilizada
 
-En el apartado de los estudiantes, veremos una opción llamada **Registro de Estudiantes**, en la cual podrás registrar Estudiantes en la base de datos. Teniendo en cuenta los nombres, apellidos y e-mail del estudiante.
+##### Front-End
+- HTML 5
+- CSS 3
+- Javascript ES6
+- Bootstrap 5.2
 
-### Entregables
+##### Back-End
+- Python 3.10.4
+- Django 4.0
 
-En el apartado de los entregables, veremos una opción llamada **Registro de Entregables**, en la cual podrás registrar Entregables en la base de datos. Teniendo en cuenta el nombre, fecha y la opción de marcar como Entregado.
+## Pruebas Realizadas
 
-### Profesores
-En el apartado de los profesores, veremos una opción llamada **Registro de Profesores**, en la cual podrás registrar Profesores en la base de datos. Teniendo en cuneta su nombre, apellidos, e-mail y profesión del mismo.
+Ver archivo titulado "Pruebas Proyecto Python - Tienda Virtual.xlsx" el cual se encuentra en el presente repositorio.
+
+## Video del proyecto

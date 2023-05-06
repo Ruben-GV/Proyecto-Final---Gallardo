@@ -1,0 +1,59 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+    <h1>CAMISETAS EN VENTA!!!!</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<h2> LISTA DE CAMISETAS </h2>
+<form action="/AppCoder/buscarCamiseta/" method="GET">
+    {% csrf_token %}
+    <input type="text" name="camiseta" id="camiseta">
+    <input type="submit" value="Buscar">
+</form>
+<br>
+<br>
+<ul>
+        {% for camiseta in camisetas %}
+        
+        
+        <div class="card-body">
+            
+            <img src="{{camiseta.imagenCamiseta.url}}" class="" width="100px">
+        </div>
+        <li>
+            {{ camiseta }}
+            {{ camiseta.user }}
+        </li>
+        {% if not user.is_staff %}
+        <a class="btn btn-success" href="{% url 'camiseta_detalle' camiseta.id %}">Detalle</a>
+        
+        {% endif %}
+
+        {% if user.is_staff %}
+        <a class="btn btn-success" href="{% url 'camiseta_detalle' camiseta.id %}">Detalle</a>
+        <a class="btn btn-success" href="{% url 'camiseta_editar' camiseta.id %}">Editar</a>
+        <a class="btn btn-danger" href="{% url 'camiseta_borrar' camiseta.id %}">Eliminar</a>
+        {% endif %}
+
+        <br>
+        </br>
+        <br>
+    </br>
+        {% endfor %}
+
+        <br>
+        </br>
+        <a class="btn btn-primary" href="{% url 'camiseta_agregar' %}">AGREGAR CAMISETA</a>
+    
+    
+</ul>
+<h3> {{ mensaje }}</h3>
+
+
+
+{% endblock %}

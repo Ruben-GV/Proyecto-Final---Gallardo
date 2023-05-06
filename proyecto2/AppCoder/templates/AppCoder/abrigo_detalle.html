@@ -1,0 +1,22 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+    <h1 class="mb-5">DATOS DE LA CAMISETA</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<br>
+<br>
+<div class="card-body">
+    <img src="{{abrigo.imagenAbrigo.url}}" class="" width="100px">
+</div>
+<p>NOMBRE: <i>{{ abrigo.nombre }}</i></p>
+<p>MARCA: <i>{{ abrigo.marca }}</i></p>
+<p>PRECIO: <i>{{ abrigo.precio }}</i></p>
+<p>TELEFONO: <i>{{ abrigo.telefono }}</i></p>
+<p>EMAIL: <i>{{ abrigo.email }}</i></p>
+
+{% endblock %}

@@ -1,26 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from AppCoder.models import *
 
-class Profesorform(forms.Form):
-    nombre= forms.CharField(max_length=50, label="Nombre")
-    apellido= forms.CharField(max_length=50, label="Apellidos")
-    email= forms.EmailField()
-    profesion= forms.CharField(max_length=50, label="Profesión")
-
-class Estudianteform(forms.Form):
-    nombre= forms.CharField(max_length=50, label="Nombre")
-    apellido= forms.CharField(max_length=50, label="Apellidos")
-    email= forms.EmailField()
-
-class Cursoform(forms.Form):
-    nombre= forms.CharField(max_length=50, label="Nombre")
-    comision= forms.CharField(max_length=50, label="Comisión")
-
-class Entregableform(forms.Form):
-    nombre= forms.CharField(max_length=50, label="Nombre")
-    fecha_entrega= forms.DateField()
-    entregado= forms.BooleanField()
 
 class RegistroUsuarioForm(UserCreationForm):
     email = forms.EmailField(label="Email usuario")
@@ -46,3 +28,53 @@ class UserEditForm(UserCreationForm):
 
 class AvatarForm(forms.Form):
     imagen=forms.ImageField(label="Imagen")
+
+
+class CamisetaForm(forms.Form):
+    nombre = forms.CharField(max_length=200, label="Nombre")
+    marca = forms.CharField(max_length=40, label="Marca")
+    precio = forms.DecimalField(max_digits=10, decimal_places=2,label="Precio")
+    telefono = forms.IntegerField(label="Telefono")
+    email = forms.EmailField()
+    imagenPolo = forms.ImageField(label="Imagen")
+
+class PantalonForm(forms.Form):
+    nombre = forms.CharField(max_length=200, label="Nombre")
+    marca = forms.CharField(max_length=40, label="Marca")
+    talla = forms.CharField(max_length=40, label="Talla")
+    precio = forms.DecimalField(max_digits=10, decimal_places=2,label="Precio")
+    telefono= forms.IntegerField(label="Telefono")
+    email = forms.EmailField()
+    imagenPantalon = forms.ImageField(label="Imagen")
+
+class ZapatoForm(forms.Form):
+    nombre = forms.CharField(max_length=200, label="Nombre")
+    marca = forms.CharField(max_length=40, label="Marca")
+    talla = forms.CharField(max_length=40, label="Talla")
+    precio = forms.DecimalField(max_digits=10, decimal_places=2,label="Precio")
+    telefono= forms.IntegerField(label="Telefono")
+    email = forms.EmailField()
+    imagenZapato = forms.ImageField(label="Imagen del Zapato")
+
+class ZapatillaForm(forms.Form):
+    nombre = forms.CharField(max_length=200, label="Nombre")
+    marca = forms.CharField(max_length=40, label="Marca")
+    talla = forms.CharField(max_length=40, label="Talla")
+    precio = forms.DecimalField(max_digits=10, decimal_places=2,label="Precio")
+    telefono= forms.IntegerField(label="Telefono")
+    email = forms.EmailField()
+    imagenZapatilla = forms.ImageField(label="Imagen de la Zapatilla")
+
+class AbrigoForm(forms.Form):
+    nombre = forms.CharField(max_length=200, label="Nombre")
+    marca = forms.CharField(max_length=40, label="Marca")
+    talla = forms.CharField(max_length=40, label="Talla")
+    precio = forms.DecimalField(max_digits=10, decimal_places=2,label="Precio")
+    telefono= forms.IntegerField(label="Telefono")
+    email = forms.EmailField()
+    imagenAbrigo = forms.ImageField(label="Imagen del Abrigo")
+
+class ComentarioForm(forms.Form):
+    class Meta:
+        nombre = forms.CharField(max_length=20, label="Nombre")
+        mensaje = forms.CharField(max_length=500, label="Mensaje")

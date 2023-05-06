@@ -1,14 +1,15 @@
 {% extends "AppCoder/padre.html" %}
-
+<link href="signin.css" rel="stylesheet">
 {% load static %}
 
 {% block titulo %}
-    <h1 class="mb-5">FORMULARIO DE INGRESO</h1>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Inicia Sesión</h1>
+    <p class="lead">Si no tienes una cuenta regístrate.</p>
+  </div>
 {% endblock %}
 
 {% block contenido_que_cambia %}
-
-<h3>{{ mensaje }}</h3>
 
 <form action="{% url 'login' %}" method="POST">
     {% csrf_token %}
@@ -18,4 +19,6 @@
 
     <input type="submit" value="INGRESAR">
 </form>
+
+
 {% endblock %}

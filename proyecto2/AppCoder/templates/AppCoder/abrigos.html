@@ -1,0 +1,52 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+    <h1>ABRIGOS EN VENTA!!!!</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<h2> LISTA DE ABRIGOS </h2>
+
+<ul>
+        {% for abrigo in abrigos %}
+        
+        
+        <div class="card-body">
+            
+            <img src="{{abrigo.imagenAbrigo.url}}" class="" width="100px">
+        </div>
+        <li>
+            {{ abrigo }}
+        </li>
+        {% if not user.is_staff %}
+        <a class="btn btn-success" href="{% url 'abrigo_detalle' abrigo.id %}">Detalle</a>
+        
+        {% endif %}
+
+        {% if user.is_staff %}
+        <a class="btn btn-success" href="{% url 'abrigo_detalle' abrigo.id %}">Detalle</a>
+        <a class="btn btn-success" href="{% url 'abrigo_editar' abrigo.id %}">Editar</a>
+        <a class="btn btn-danger" href="{% url 'abrigo_borrar' abrigo.id %}">Eliminar</a>
+        {% endif %}
+
+        <br>
+        </br>
+        <br>
+    </br>
+        {% endfor %}
+
+        <br>
+        </br>
+        <a class="btn btn-primary" href="{% url 'abrigo_agregar' %}">AGREGAR ABRIGO</a>
+    
+    
+</ul>
+<h3> {{ mensaje }}</h3>
+
+
+
+{% endblock %}

@@ -1,9 +1,11 @@
 from django.contrib import admin
-from .models import  Curso, Profesor, Estudiante, Entregable, Avatar
+from .models import  Avatar, Camiseta, Pantalon, Zapato, Abrigo, Comentario, Mensaje
 # Register your models here.
 
-admin.site.register(Curso)
-admin.site.register(Profesor)
-admin.site.register(Estudiante)
-admin.site.register(Entregable)
 admin.site.register(Avatar)
+admin.site.register(Camiseta)
+admin.site.register(Pantalon)
+admin.site.register(Zapato)
+admin.site.register(Abrigo)
+admin.site.register(Comentario)
+admin.site.register(Mensaje)

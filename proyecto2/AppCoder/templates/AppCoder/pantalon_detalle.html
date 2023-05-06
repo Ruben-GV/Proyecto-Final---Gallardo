@@ -1,0 +1,23 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+    <h1 class="mb-5">DATOS DEL PANTALON</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<br>
+<br>
+<div class="card-body">
+    <img src="{{pantalon.imagenPantalon.url}}" class="" width="100px">
+</div>
+<p>NOMBRE: <i>{{ pantalon.nombre }}</i></p>
+<p>MARCA: <i>{{ pantalon.marca }}</i></p>
+<p>TALLA: <i>{{ pantalon.talla }}</i></p>
+<p>PRECIO: <i>{{ pantalon.precio }}</i></p>
+<p>TELEFONO: <i>{{ pantalon.telefono }}</i></p>
+<p>EMAIL: <i>{{ pantalon.email }}</i></p>
+
+{% endblock %}

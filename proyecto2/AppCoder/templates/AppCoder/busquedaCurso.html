@@ -4,18 +4,18 @@
 
 
 {% block titulo %}
-    <h1>Busca tu Curso!</h1>
+    <h1>Busca tu Camiseta!</h1>
 {% endblock %}
 
 {% block contenido_que_cambia %}
 
-<h1> Búsqueda de Cursos </h1>
-<form action="/AppCoder/buscar/" method="GET">
+<h1> Búsqueda de Camisetas </h1>
+<form action="/AppCoder/buscarCamiseta/" method="GET">
     {% csrf_token %}
     <table>
     {{ form.as_table }}
     </table>
-    <input type="number" name="comision" id="comision">
+    <input type="text" name="camiseta" id="camiseta">
     <input type="submit" value="Buscar">
 </form>
 

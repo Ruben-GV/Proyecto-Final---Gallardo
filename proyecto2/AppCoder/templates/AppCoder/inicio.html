@@ -3,20 +3,21 @@
 {% load static %}
 
 {% block titulo %}
-    <h1>Proyecto Final - Gallardo</h1>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Bienvenido a la tienda</h1>
+    <p class="lead">Para las personas que desean vestir bien</p>
+  </div>
 {% endblock %}
 
 {% block contenido_que_cambia %}
+{% if user.is_authenticated %}
+<div class="text-center">
 <h2> {{ mensaje }}</h2>
-<br></br>
-<h1> Busqueda de Curso </h1>
+<p class="lead">Si eres nuevo, agrega una foto de perfil :D</p>
+<br>
+<br>
+{% endif %}
 
-<form action="/AppCoder/buscar/" method="GET">
-    {% csrf_token %}
-    <table>
-    {{ form.as_table }}
-    </table>
-    <input type="number" name="comision" id="comision">
-    <input type="submit" value="Buscar">
-</form>
+</div>
+<br></br>
 {% endblock %}

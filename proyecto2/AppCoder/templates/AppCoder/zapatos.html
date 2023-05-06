@@ -1,0 +1,52 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+
+{% block titulo %}
+    <h1>ZAPATOS EN VENTA!!!!</h1>
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<h2> LISTA DE ZAPATOS </h2>
+
+<ul>
+        {% for zapato in zapatos %}
+        
+        
+        <div class="card-body">
+            
+            <img src="{{zapato.imagenZapato.url}}" class="" width="100px">
+        </div>
+        <li>
+            {{ zapato }}
+        </li>
+        {% if not user.is_staff %}
+        <a class="btn btn-success" href="{% url 'zapato_detalle' zapato.id %}">Detalle</a>
+        
+        {% endif %}
+
+        {% if user.is_staff %}
+        <a class="btn btn-success" href="{% url 'zapato_detalle' zapato.id %}">Detalle</a>
+        <a class="btn btn-success" href="{% url 'zapato_editar' zapato.id %}">Editar</a>
+        <a class="btn btn-danger" href="{% url 'zapato_borrar' zapato.id %}">Eliminar</a>
+        {% endif %}
+
+        <br>
+        </br>
+        <br>
+    </br>
+        {% endfor %}
+
+        <br>
+        </br>
+        <a class="btn btn-primary" href="{% url 'zapato_agregar' %}">AGREGAR ZAPATO</a>
+    
+    
+</ul>
+<h3> {{ mensaje }}</h3>
+
+
+
+{% endblock %}

@@ -2,13 +2,20 @@
 
 {% load static %}
 
-
 {% block titulo %}
-    <h1 class="mb-5">AGREGANDO AVATAR DE. {{ usuario.username }}</h1>
+<br>
+<br>
+<br>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Agregando Foto de Perfil</h1>
+        <p class="lead">{{ usuario.username }} está cambiando su foto de perfil.</p>
+      </div>
 {% endblock %}
 
 {% block contenido_que_cambia %}
-
+<br>
+<br>
+<br>
 <h3>{{ mensaje }}</h3>
 <form action="{% url 'agregarAvatar' %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 
