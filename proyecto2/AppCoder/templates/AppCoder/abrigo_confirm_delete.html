@@ -11,8 +11,6 @@
 
 {% block contenido_que_cambia %}
 
-<h1>ELIMINAR ABRIGO</h1>
-
 <form method="post"> {% csrf_token %}
     Estas seguro que deseas borrar el producto "{{ object }}"?
     <input type="submit" value="SI">

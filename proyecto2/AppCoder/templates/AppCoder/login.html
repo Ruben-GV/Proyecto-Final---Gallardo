@@ -11,14 +11,35 @@
 
 {% block contenido_que_cambia %}
 
-<form action="{% url 'login' %}" method="POST">
-    {% csrf_token %}
-    <table>
-    {{ form.as_table }}
-    </table>
+<form action="{% url 'login' %}" method="POST"> {% csrf_token %}
+  <table>
 
-    <input type="submit" value="INGRESAR">
+      {{ form.as_table }}
+
+  </table>
+  <input type="submit" value="INGRESAR">
 </form>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 {% endblock %}

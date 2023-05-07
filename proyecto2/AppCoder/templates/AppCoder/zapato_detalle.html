@@ -22,24 +22,5 @@
 <p class="lead">EMAIL: <i>{{ zapato.email }}</i></p>
 </div>
 
-<br>
-<div class="container">
-    <h4>Comentarios del Producto</h4>
-    <br>
-    <div class="container">
-    {% if not zapato.comentarios.all %}
-        No hay comentarios para este producto.
-    {% else %}
-        {% for zapato in zapato.comentarios.all %}
-        <p><strong>{{comentario.nombre}}</strong></p>
-        <p>{{comentario.mensaje}}</p>
-        <p><small>{{comentario.fechaComentario}}</small></p>
-        <hr>
-        {% endfor %}
-    {% endif %}
-    <a href="{% url 'comentarios' zapato.pk %}">Agrega un Comentario</a>
-    </div>
-</div>
-<br>
 
 {% endblock %}

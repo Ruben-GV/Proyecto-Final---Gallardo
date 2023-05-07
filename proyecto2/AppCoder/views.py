@@ -1,6 +1,7 @@
+import datetime
 from django.forms.models import BaseModelForm
 from django.shortcuts import render
-from .models import Avatar, Camiseta, Pantalon, Zapato, Abrigo, Comentario
+from .models import Avatar, Camiseta, Pantalon, Zapato, Abrigo
 from django.http import HttpResponse
 from .forms import *
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -18,9 +19,6 @@ def inicio(request):
 
 def inicioApp(request):
     return render(request, "AppCoder/inicio.html", {"avatar":obtenerAvatar(request)})
-
-#def busquedaCurso(request):
-   # return render(request, "AppCoder/busquedaCurso.html")
 
 def obtenerAvatar(request):
     avatar= Avatar.objects.filter(user=request.user.id)
@@ -277,53 +275,6 @@ class AbrigoUpdate(UpdateView):
 class AbrigoDelete(DeleteView):
     model = Abrigo
     success_url = reverse_lazy("abrigo_list")
-
-@login_required
-def comentarios(request):
-    if request.method == "POST":
-        form = ComentarioForm(request.POST)
-        if form.is_valid():
-            comentario = Comentario()
-            comentario.nombre = form.cleaned_data['nombre']
-            comentario.mensaje = form.cleaned_data['mensaje']
-            comentario.save()
-            form = ComentarioForm()
-    else:
-        form =  ComentarioForm()
-    comentarios = Comentario.objects.all()
-    avatar= Avatar.objects.filter(user=request.user.id)[0].imagen.url
-    context = {"comentarios": comentarios, "form": form, "avatar":avatar}
-    return render(request, "AppCoder/comentario.html",context)
-
-@login_required
-def crear_comentario(request):
-    if request.method == 'POST':
-        form = ComentarioForm(request.POST)
-        if form.is_valid():
-            comentario = Comentario()
-            comentario.nombre = form.cleaned_data['nombre']
-            comentario.mensaje = form.cleaned_data['mensaje']
-            comentario.save()
-            form = ComentarioForm()
-    else:
-        form = ComentarioForm()
-    avatar= Avatar.objects.filter(user=request.user.id)[0].imagen.url
-    context = {"comentarios": comentarios, "form": form, "avatar":avatar}
-    return render(request, "AppCoder/comentario.html",context)
-
-
-@login_required
-def buscarCamiseta(request):
-
-    if request.GET['nombre']:
-        nombre = request.GET['nombre']
-        camisetas = Camiseta.objects.filter(nombre__icontains=nombre)
-
-        return render(request, "AppCoder/resultadosBusquedaCamiseta.html", {"camisetas":camisetas, "nombre":nombre})
-    else:
-        respuesta = "No enviaste datos"
-    return HttpResponse(respuesta)
-
 
 def sobreMi(request):
     return render(request, 'AppCoder/sobreMi.html', {})

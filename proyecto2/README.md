@@ -28,6 +28,11 @@ Los usuarios pueden realizar las siguientes accciones:
 - Cerrar Sesión en la página
 - Iniciar sesión en caso de haber cerrado sesión
 
+Los administradores pueden realizar las siguientes acciones:
+- Agregar nuevos productos(abrigos, pantalones, camisetas, zapatos).
+- Poder editar la informacion de cada producto (nombre, talla, precio, marca, imagen, telefono, email).
+- Eliminar los productos(abrigos, pantalones, camisetas, zapatos).
+
 Importante: solo la administración de la página puede crear, editar y eliminar los productos de la tienda.
 
 # Tecnología Utilizada
@@ -47,3 +52,5 @@ Importante: solo la administración de la página puede crear, editar y eliminar
 Ver archivo titulado "Pruebas Proyecto Python - Tienda Virtual.xlsx" el cual se encuentra en el presente repositorio.
 
 ## Video del proyecto
+
+https://youtu.be/11HFGXnAQNE

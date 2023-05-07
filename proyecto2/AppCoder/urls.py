@@ -8,8 +8,6 @@ urlpatterns = [
     
     path("", inicioApp, name="inicioApp"),
 
-    #path("comentarios/", comentarios, name="comentarios"),
-
     path("login/", login_request, name="login"),
     path("register/", register, name="register"),
     path("logout/", LogoutView.as_view(template_name="AppCoder/logout.html"), name="logout"),
@@ -43,11 +41,6 @@ urlpatterns = [
     path("zapato/<pk>", ZapatoDetalle.as_view(), name="zapato_detalle"),
     path("zapato/editar/<pk>", ZapatoUpdate.as_view(), name="zapato_editar"),
     path("zapato/borrar/<pk>", ZapatoDelete.as_view(), name="zapato_borrar"),
-
-    path('pantalon_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
-    path('abrigo_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
-    path('camiseta_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
-    path('zapato_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
 
     path('acercaDeMi/', views.sobreMi, name='sobreMi'),
 ]
