@@ -323,3 +323,7 @@ def buscarCamiseta(request):
     else:
         respuesta = "No enviaste datos"
     return HttpResponse(respuesta)
+
+
+def sobreMi(request):
+    return render(request, 'AppCoder/sobreMi.html', {})

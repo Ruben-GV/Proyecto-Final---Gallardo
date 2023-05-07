@@ -5,16 +5,14 @@
 
 {% block titulo %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Detalles del Abrigo</h1>
+    <h1 class="display-4">Datos del Abrigo</h1>
   </div>
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<br>
-<br>
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center"></div>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
 <div class="card-body">
-    <img src="{{abrigo.imagenAbrigo.url}}" class="" width="100px">
+    <img src="{{abrigo.imagenAbrigo.url}}" class="" width="200px">
 </div>
 <p class="lead">NOMBRE: <i>{{ abrigo.nombre }}</i></p>
 <p class="lead">MARCA: <i>{{ abrigo.marca }}</i></p>
@@ -23,23 +21,5 @@
 <p class="lead">TELEFONO: <i>{{ abrigo.telefono }}</i></p>
 <p class="lead">EMAIL: <i>{{ abrigo.email }}</i></p>
 </div>
-<br>
-<div class="container">
-    <h4>Comentarios...</h4>
-    <br>
-    <div class="container">
-    {% if not abrigo.comentarios.all %}
-        No han comentado este instrumento
-    {% else %}
-        {% for abrigo in abrigo.comentarios.all %}
-        <p><strong>{{comentario.nombre}}</strong></p>
-        <p>{{comentario.mensaje}}</p>
-        <p><small>{{comentario.fechaComentario}}</small></p>
-        <hr>
-        {% endfor %}
-    {% endif %}
-    <a href="{% url 'comentarios' abrigo.pk %}">Agrega un Comentario</a>
-    </div>
-</div>
-<br>
+
 {% endblock %}

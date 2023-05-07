@@ -48,4 +48,6 @@ urlpatterns = [
     path('abrigo_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
     path('camiseta_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
     path('zapato_detalle/<int:pk>/comentario/', crear_comentario, name='comentarios'),
+
+    path('acercaDeMi/', views.sobreMi, name='sobreMi'),
 ]
